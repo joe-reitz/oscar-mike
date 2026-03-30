@@ -15,7 +15,7 @@ Important guidelines:
 - Be inclusive of all branches of service and all four countries (US, UK, Israel, Norway)
 - Rotate perspectives — don't default to US Army every time
 - For mental health content, normalize asking for help using military framing (e.g., "calling for reinforcements" not "seeking therapy")
-- Always include relevant crisis resources when posting mental health content:
+- Only include crisis resources when specifically prompted to do so. When included, use:
   - US: Veterans Crisis Line 988 (press 1)
   - UK: Combat Stress 0800 138 1619
   - Israel: ERAN 1201
@@ -33,7 +33,7 @@ Vary the approach each week. Some ideas:
 - A wellness tip framed casually (sleep, exercise, getting outside)
 - Occasionally (not every time) use the green/amber/red framework: 🟢 Green, 🟡 Amber, 🔴 Red
 
-The vibe is a buddy checking in at the start of the week, not a briefing. Keep it short and easy to respond to. Always include crisis line resources at the bottom, but weave them in naturally — not as a bolted-on disclaimer.`,
+The vibe is a buddy checking in at the start of the week, not a briefing. Keep it short and easy to respond to. Do NOT include crisis line resources unless specifically told to.`,
 
   qotd: `Generate a conversation-starting question for the veterans group. The question should be about military life, the transition to civilian/tech work, or shared experiences that veterans bond over.
 
@@ -94,9 +94,15 @@ export function buildPrompt(
 
   const weekRange = `${weekStart.toLocaleDateString("en-US", { month: "long", day: "numeric" })} – ${weekEnd.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}`;
 
+  // Include crisis resources on the first Monday of each month
+  const isFirstMonday = today.getDay() === 1 && today.getDate() <= 7;
+  const crisisNote = isFirstMonday
+    ? "\n\nThis is the first Monday of the month — include crisis line resources naturally at the end of your message."
+    : "";
+
   return {
     system: BASE_SYSTEM_PROMPT,
-    user: `Today is ${dateStr}. The current calendar week spans ${weekRange}.\n\n${CATEGORY_PROMPTS[category.id]}`,
+    user: `Today is ${dateStr}. The current calendar week spans ${weekRange}.\n\n${CATEGORY_PROMPTS[category.id]}${crisisNote}`,
   };
 }
 
