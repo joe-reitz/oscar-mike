@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { generateText } from "ai";
-import { anthropic } from "@ai-sdk/anthropic";
+import { gateway } from "@ai-sdk/gateway";
 import { getCategoryForDay } from "@/lib/categories";
 import { getHolidayForDate } from "@/lib/holidays";
 import { buildPrompt, buildHolidayPrompt } from "@/lib/prompts";
@@ -41,7 +41,7 @@ export async function GET(request: Request) {
     }
 
     const { text } = await generateText({
-      model: anthropic("claude-sonnet-4-5"),
+      model: gateway("anthropic/claude-sonnet-4.5"),
       system: prompt.system,
       prompt: prompt.user,
       maxOutputTokens: 500,
