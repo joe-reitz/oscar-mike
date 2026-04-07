@@ -35,7 +35,7 @@ export async function GET(request: Request) {
       prompt = buildHolidayPrompt(holiday, today);
       formatMessage = (body) => formatHolidayMessage(holiday, body);
     } else {
-      const category = getCategoryForDay(dayOfWeek);
+      const category = getCategoryForDay();
       prompt = buildPrompt(category, today);
       formatMessage = (body) => formatCategoryMessage(category, body);
     }
@@ -53,7 +53,7 @@ export async function GET(request: Request) {
     return NextResponse.json({
       message: "Posted successfully",
       holiday: holiday?.name ?? null,
-      category: holiday ? "holiday" : getCategoryForDay(dayOfWeek).id,
+      category: holiday ? "holiday" : getCategoryForDay().id,
     });
   } catch (error) {
     console.error("Oscar Mike failed to post:", error);
