@@ -27,25 +27,29 @@ Important guidelines:
 - Do not include any header/title — that will be added separately
 - End with something that invites engagement (a question, a prompt to share, etc.)`;
 
-const DAILY_PROMPT = `Generate a conversation starter for the veterans group. This should be a UNIQUE question or prompt — something that hasn't been asked before and that people actually want to respond to in a thread.
+const DAILY_PROMPT = `Generate a conversation starter for the veterans group. The GOAL is to draw the group closer together as a unit — questions anyone can answer, that spark replies, that help people get to know each other as humans.
 
 CRITICAL: You must generate something genuinely different every single day. Use today's date as your anchor — never produce the same question twice.
 
-The topic does NOT have to be military. You're a veteran, that's your personality, but the conversation can be about anything. Think of it like what a veteran buddy might bring up over coffee — sometimes it's about service, sometimes it's about life, food, travel, work, hobbies, hot takes, random curiosities, whatever.
+DEFAULT TO GENERAL "question of the day" territory. The bulk of prompts should be things anyone could answer at a dinner table — not things that require a service background. The veteran identity is the personality of the bot, not the subject of every question.
 
-Here's a wide pool to draw from (pick ONE, and find a fresh angle each time):
-- Military life: MOS/rate/trade stories, duty stations, military food, kit you miss, formation stories, traditions, the transition to civilian life, skills that transferred to tech
-- Life stuff: weekend plans, best meal you've had lately, something you've been binge-watching, a skill you picked up recently, travel stories, unpopular opinions (keep it light)
-- Work & tech: something cool you shipped, a tool that changed your workflow, the weirdest bug you've ever seen, tech hot takes
-- Nostalgia: things you miss about a previous era, first car, first job, the thing that made you realize you were "out"
-- Fun & random: would you rather, hot takes, "what's the most [X] thing you've ever done", caption contests, desert island scenarios
-- Community: shoutouts, something you're proud of, a lesson from service that stuck with you, best leader you ever had
-- Check-ins: how's everyone doing (but find a fresh way to ask it — not the same "how was your weekend" every time)
-- History: cool things that happened on this date, lesser-known military history, "on this day" facts
+Primary pool — lean heavily on these (~80% of prompts):
+- Food & drink: best meal lately, weirdest thing you'll eat, go-to comfort food, coffee order, the hill you'll die on about a food
+- Life & weekends: what you got up to, a small win this week, what's on the calendar, something you're looking forward to
+- Hot takes & would-you-rathers: light, playful, non-divisive
+- Skills & hobbies: something you're learning, a side project, a book/show/album you're into, a hobby nobody would guess you have
+- Firsts & nostalgia: first car, first concert, first job, first boss, first apartment
+- Travel: favorite city, worst flight, bucket list, most underrated place you've been
+- Work & tech (light): a tool you love, a workflow tip, a bug story, the best manager you ever had (civilian or military)
+- Random curiosities: "what's the most [X] thing you've ever done," caption prompts, desert island picks, superpowers, walk-up songs
 
-Bad topics: anything political, anything that could trigger trauma without warning, ranking branches divisively.
+Seasoning — use sparingly (~20% of prompts, max 1–2 per week):
+- A veteran-flavored angle: transition stories, a lesson from service that stuck, cross-country comparisons across the four nations, "on this day" history
+- Keep it light and inclusive when you do go there — never gear/kit-focused, never a loadout discussion
 
-Ask ONE clear question or prompt. Keep it short and easy to respond to.`;
+Avoid repeating topic areas from recent days. Specifically, DO NOT do gear/kit/loadout/equipment questions — those have been overused. Also avoid: politics, trauma triggers, ranking branches, anything that excludes the UK/Israel/Norway members.
+
+Ask ONE clear question. Keep it short and low-stakes so people actually reply.`;
 
 export function buildPrompt(
   _category: Category,
